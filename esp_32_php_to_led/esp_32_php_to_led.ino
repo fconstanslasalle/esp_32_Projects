@@ -28,9 +28,6 @@ void handleRoot() {
   int numUnos = 0;
   int numCeros = 0;
   for (int i = 0; i < cadena_array.length(); i++) {
-    if (cadena_array.charAt(i) == ',') {
-      indice++;
-    } 
     if (cadena_array.charAt(i)=='1'){
       valores[indice]=1;
       indice++;
@@ -47,10 +44,10 @@ void handleRoot() {
   for (int i = 0; i < NUM_LEDS; i++) {
     if (valores[i]==1){
       leds[i]=CRGB::White;   
-      Serial.println("Encendiendo led número"+1);
+      FastLED.show();
     }else{
       leds[i]=CRGB::Black;
-      Serial.println("Apagando led número"+i);
+      FastLED.show();
     }  
   }
   FastLED.show();
