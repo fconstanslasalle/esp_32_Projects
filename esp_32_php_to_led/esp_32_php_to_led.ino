@@ -42,15 +42,18 @@ void handleRoot() {
 
   // Actualizar la matriz de LEDs con los valores del array
   for (int i = 0; i < NUM_LEDS; i++) {
+    
     if (valores[i]==1){
-      leds[i]=CRGB::White;   
-      FastLED.show();
+      leds[i]=CRGB::White;
+      FastLED.show();   
+      delay(30);
     }else{
       leds[i]=CRGB::Black;
       FastLED.show();
+      delay(30);
     }  
   }
-  FastLED.show();
+  
  // Enviar una respuesta al cliente
  server.send(200, "text/plain", "Array actualizado correctamente");
 
