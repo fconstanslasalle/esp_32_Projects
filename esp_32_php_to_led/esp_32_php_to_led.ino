@@ -9,6 +9,7 @@
 #define DATA_PIN 2
 #define LED_TYPE WS2812B
 #define COLOR_ORDER GRB
+#define FASTLED_OVERCLOCK 1.2
 
 CRGB leds[NUM_LEDS];
 WebServer server(80);
@@ -41,18 +42,22 @@ void handleRoot() {
   }
 
   // Actualizar la matriz de LEDs con los valores del array
+  FastLED.clear();
+  FastLED.setBrightness(10);
   for (int i = 0; i < NUM_LEDS; i++) {
     
     if (valores[i]==1){
       leds[i]=CRGB::White;
-      FastLED.show();   
-      delay(30);
+      FastLED.show(); 
+      
     }else{
       leds[i]=CRGB::Black;
-      FastLED.show();
-      delay(30);
-    }  
+      FastLED.show(); 
+      
+    } 
+    FastLED.show(); 
   }
+  FastLED.show();
   
  // Enviar una respuesta al cliente
  server.send(200, "text/plain", "Array actualizado correctamente");
@@ -65,7 +70,7 @@ void setup() {
   Serial.println("Iniciando sistema...");
 
   FastLED.addLeds<LED_TYPE, DATA_PIN, COLOR_ORDER>(leds, NUM_LEDS);
-  FastLED.setBrightness(50); // Ajusta el brillo según sea necesario
+  FastLED.setBrightness(10); // Ajusta el brillo según sea necesario
 
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
   while (WiFi.status() != WL_CONNECTED) {
@@ -87,5 +92,6 @@ void setup() {
 
 void loop() {
   
-  server.handleClient(); 
+  server.handleClient();
+  
 }
