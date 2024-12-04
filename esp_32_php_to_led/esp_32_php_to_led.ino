@@ -5,7 +5,7 @@
 
 #define WIFI_SSID "LSG-CFGS" 
 #define WIFI_PASSWORD "CFGS-L@S@lleGr@ci@"
-#define NUM_LEDS 64
+#define NUM_LEDS 36
 #define DATA_PIN 2
 #define LED_TYPE WS2812B
 #define COLOR_ORDER GRB
@@ -43,11 +43,11 @@ void handleRoot() {
 
   // Actualizar la matriz de LEDs con los valores del array
   FastLED.clear();
-  FastLED.setBrightness(10);
+  FastLED.setBrightness(50);
   for (int i = 0; i < NUM_LEDS; i++) {
     
     if (valores[i]==1){
-      leds[i]=CRGB::White;
+      leds[i]=CRGB::Red;
       FastLED.show(); 
       
     }else{
@@ -70,7 +70,7 @@ void setup() {
   Serial.println("Iniciando sistema...");
 
   FastLED.addLeds<LED_TYPE, DATA_PIN, COLOR_ORDER>(leds, NUM_LEDS);
-  FastLED.setBrightness(10); // Ajusta el brillo según sea necesario
+  FastLED.setBrightness(50); // Ajusta el brillo según sea necesario
 
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
   while (WiFi.status() != WL_CONNECTED) {
