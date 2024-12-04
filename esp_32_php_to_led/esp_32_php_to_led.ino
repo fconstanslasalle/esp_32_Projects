@@ -43,7 +43,7 @@ void handleRoot() {
 
   // Actualizar la matriz de LEDs con los valores del array
   FastLED.clear();
-  FastLED.setBrightness(50);
+  FastLED.setBrightness(80);
   for (int i = 0; i < NUM_LEDS; i++) {
     
     if (valores[i]==1){
@@ -70,7 +70,7 @@ void setup() {
   Serial.println("Iniciando sistema...");
 
   FastLED.addLeds<LED_TYPE, DATA_PIN, COLOR_ORDER>(leds, NUM_LEDS);
-  FastLED.setBrightness(50); // Ajusta el brillo según sea necesario
+  FastLED.setBrightness(80); // Ajusta el brillo según sea necesario
 
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
   while (WiFi.status() != WL_CONNECTED) {
