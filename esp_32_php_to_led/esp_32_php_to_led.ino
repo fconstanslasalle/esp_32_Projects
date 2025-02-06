@@ -47,7 +47,7 @@ void handleRoot() {
   for (int i = 0; i < NUM_LEDS; i++) {
     
     if (valores[i]==1){
-      leds[i]=CRGB::Red;
+      leds[i]=CRGB::Green;
       FastLED.show(); 
       
     }else{
